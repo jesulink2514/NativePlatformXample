@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NativePlatformApp.MainPage"
+             Title="Users">
+    <Grid CompressedLayout.IsHeadless="true">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="120"/>
+        </Grid.RowDefinitions>
+        
+        <ListView >
+        </ListView>
+        
+        <StackLayout Grid.Row="1" Orientation="Horizontal" Padding="20" BackgroundColor="Accent">
+            <Label Text="0" FontSize="40" HorizontalOptions="EndAndExpand" TextColor="White" VerticalOptions="CenterAndExpand"/>
+            <Label Text="ms" HorizontalOptions="StartAndExpand" TextColor="White" VerticalOptions="CenterAndExpand"></Label>
+        </StackLayout>
+    </Grid>
+
+</ContentPage>
