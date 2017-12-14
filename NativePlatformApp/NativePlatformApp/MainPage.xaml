@@ -9,11 +9,19 @@
             <RowDefinition Height="120"/>
         </Grid.RowDefinitions>
         
-        <ListView >
+        <ListView ItemsSource="{Binding Users}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ImageCell ImageSource="{Binding avatar}"
+                               Text="{Binding first_name}"
+                               Detail="{Binding last_name}"
+                        />
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
         
         <StackLayout Grid.Row="1" Orientation="Horizontal" Padding="20" BackgroundColor="Accent">
-            <Label Text="0" FontSize="40" HorizontalOptions="EndAndExpand" TextColor="White" VerticalOptions="CenterAndExpand"/>
+            <Label Text="{Binding Milliseconds}" FontSize="40" HorizontalOptions="EndAndExpand" TextColor="White" VerticalOptions="CenterAndExpand"/>
             <Label Text="ms" HorizontalOptions="StartAndExpand" TextColor="White" VerticalOptions="CenterAndExpand"></Label>
         </StackLayout>
     </Grid>
