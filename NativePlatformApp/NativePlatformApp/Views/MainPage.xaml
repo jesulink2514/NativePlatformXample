@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NativePlatformApp.MainPage"
-             Title="Users">
+             Title="Users" x:Name="Main">
     <Grid CompressedLayout.IsHeadless="true">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -18,7 +18,7 @@
                                Detail="{Binding last_name}">
                         <ImageCell.ContextActions>
                             <MenuItem Text="Delete" Icon="trash.png"
-                                Command="{Binding DeleteCommand}"
+                                Command="{Binding BindingContext.DeleteCommand,Source={x:Reference Main}}"
                                 CommandParameter="{Binding .}"
                                 IsDestructive="True"/>
                         </ImageCell.ContextActions>
@@ -29,7 +29,8 @@
         
         <StackLayout Grid.Row="1" Padding="15">
             <Button Text="Update User" BorderRadius="20" TextColor="White" 
-                    BackgroundColor="#0174C6" HeightRequest="50"/>
+                    BackgroundColor="#0174C6" HeightRequest="50"
+                    Command="{Binding UpdateCommand}"/>
         </StackLayout>
         
         <StackLayout Grid.Row="2" Orientation="Horizontal" Padding="20" BackgroundColor="Accent">
