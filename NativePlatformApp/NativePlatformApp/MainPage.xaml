@@ -6,6 +6,7 @@
     <Grid CompressedLayout.IsHeadless="true">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="120"/>
         </Grid.RowDefinitions>
         
@@ -14,16 +15,28 @@
                 <DataTemplate>
                     <ImageCell ImageSource="{Binding avatar}"
                                Text="{Binding first_name}"
-                               Detail="{Binding last_name}"
-                        />
+                               Detail="{Binding last_name}">
+                        <ImageCell.ContextActions>
+                            <MenuItem Text="Delete" Icon="trash.png"
+                                Command="{Binding DeleteCommand}"
+                                CommandParameter="{Binding .}"
+                                IsDestructive="True"/>
+                        </ImageCell.ContextActions>
+                    </ImageCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
         
-        <StackLayout Grid.Row="1" Orientation="Horizontal" Padding="20" BackgroundColor="Accent">
+        <StackLayout Grid.Row="1" Padding="15">
+            <Button Text="Update User" BorderRadius="20" TextColor="White" 
+                    BackgroundColor="#0174C6" HeightRequest="50"/>
+        </StackLayout>
+        
+        <StackLayout Grid.Row="2" Orientation="Horizontal" Padding="20" BackgroundColor="Accent">
             <Label Text="{Binding Milliseconds}" FontSize="40" HorizontalOptions="EndAndExpand" TextColor="White" VerticalOptions="CenterAndExpand"/>
             <Label Text="ms" HorizontalOptions="StartAndExpand" TextColor="White" VerticalOptions="CenterAndExpand"></Label>
         </StackLayout>
     </Grid>
 
 </ContentPage>
+
