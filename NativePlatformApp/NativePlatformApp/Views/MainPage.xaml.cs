@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Diagnostics;
+using NativePlatformApp.ViewModels;
 using Xamarin.Forms.Xaml;
 
 namespace NativePlatformApp
@@ -7,23 +8,17 @@ namespace NativePlatformApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage
     {
-        private readonly Stopwatch stopwatch;
-
         public MainPage()
         {
             InitializeComponent();
-            this.stopwatch = new Stopwatch();
-            this.BindingContext = this;
+            BindingContext = new MainViewModel();
+
         }
 
         protected override async void OnAppearing()
         {
-            stopwatch.Reset();
-            stopwatch.Start();
-
-
-
-            stopwatch.Stop();
+            var vm = this.BindingContext as MainViewModel;
+            await vm.LoadData();
         }
     }
 }
